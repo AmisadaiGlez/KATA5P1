@@ -1,7 +1,10 @@
 package kata5p1;
 
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -24,5 +27,8 @@ public class KATA5P1 {
             System.out.println(rs.getString("Name"));
             System.out.println(rs.getInt("Id"));
         }
+        
+        query = "CREATE TABLE IF NOT EXISTS MAIL ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'Mail' TEXT NOT NULL);";
+        statement.executeUpdate(query);
     }
 }
