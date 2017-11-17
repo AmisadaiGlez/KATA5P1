@@ -30,5 +30,20 @@ public class KATA5P1 {
         
         query = "CREATE TABLE IF NOT EXISTS MAIL ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'Mail' TEXT NOT NULL);";
         statement.executeUpdate(query);
+        
+        String nameFile = "emails.txt";
+        BufferedReader reader = new BufferedReader(new FileReader(new 
+        File(nameFile)));
+
+        String mail;
+        while((mail=reader.readLine())!=null) {
+            if(!mail.contains("@")) continue;
+            query = "INSERT INTO MAIL (Mail) VALUES ('" + mail + "');";
+            //System.out.println(query);
+            statement.executeUpdate(query);
+        }
+        query = "Select count (*) from MAIL";
+        rs = statement.executeQuery(query);
+        System.out.println(rs.getInt("count (*)"));
     }
 }
